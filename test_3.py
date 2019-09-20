@@ -141,6 +141,8 @@ print(bias2)
 
 
 
+
+
 dx = relu_reverse(dx)
 print('第一层relu求导后',dx)
 # for dd, xx in zip(dx, x):
@@ -156,8 +158,6 @@ dw = np.sum(ddw, axis=0) / x.shape[0]  #求误差对权重的平均值
 print('dw',dw)
 db = np.sum(dx, axis=0) / x.shape[0]  #
 print('db',db)
-
-
 
 
 
