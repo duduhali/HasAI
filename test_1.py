@@ -2,6 +2,8 @@ import numpy as np
 from keras.models import Sequential,load_model
 from keras.layers import Dense, Flatten
 
+
+
 class Data:
     def __init__(self, name, batch_size):  # 数据所在的文件名name和batch中图片的数量batch_size
         print(name)
