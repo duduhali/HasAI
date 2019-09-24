@@ -24,8 +24,9 @@ class Softmax:
         return gradient
 
     def backward(self,value):
-        value = value.reshape(self.shape[0:-1])
-        self.input = self.input.reshape(self.shape[0:-1])
+        if len(self.shape)==3:
+            value = value.reshape(self.shape[0:-1])
+            self.input = self.input.reshape(self.shape[0:-1])
         gradient = np.vstack([self._backward(np.atleast_2d(v),np.atleast_2d(i)) for v,i in zip(value,self.input)])
 
         return gradient.reshape(self.shape)

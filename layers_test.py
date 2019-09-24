@@ -13,5 +13,3 @@ class Activation:
     pass
 class BatchNormalization:
     pass
-class Reshape:
-    pass

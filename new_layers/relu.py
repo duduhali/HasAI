@@ -12,10 +12,8 @@ class Relu:
 
 if( __name__ == '__main__'):
     r = Relu()
-    y = r.forward(np.array([[1, 2]]))
+    data = np.full((32, 64, 3), 1)
+    y = r.forward(data)
     print(y)
     print(r.backward(y))
 
-    y = r.forward(np.array([[1, -2], [3, 5]]))
-    print(y)
-    print(r.backward(y))
