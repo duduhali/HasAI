@@ -12,7 +12,6 @@ model.add( Relu() )
 
 model.add( Dense(1) )
 model.add( Relu() )
-model.add( Flatten() )
 
 model.compile( loss=MeanSquaredError(), optimizer=SGD(lr=0.05),metrics=accuracy.accuracy)
 

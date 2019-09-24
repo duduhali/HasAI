@@ -1,7 +1,7 @@
 from models import Sequential
 from layers import Dense,Relu,Flatten,Softmax
 from optimizers import SGD
-from losses import softmax_cross_entropy_with_logits
+from losses import CrossEntropyLoss
 import accuracy
 import numpy as np
 
@@ -9,13 +9,13 @@ import numpy as np
 model = Sequential()
 model.add( Dense(17*17,input_shape=(17*17,1)) )
 model.add( Relu() )
-model.add(Flatten())
+# model.add(Flatten())
 model.add( Dense(40) )
 model.add( Relu() )
 model.add( Dense(26) )
-# model.add( Softmax())
+model.add( Softmax())
 
-model.compile( loss=softmax_cross_entropy_with_logits(), optimizer=SGD(lr=0.05),metrics=accuracy.accuracy)
+model.compile( loss=CrossEntropyLoss(), optimizer=SGD(lr=0.05),metrics=accuracy.accuracy)
 
 
 with open('data/train.npy', 'rb') as f:

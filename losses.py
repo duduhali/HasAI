@@ -2,7 +2,8 @@ import numpy as np
 
 class MeanSquaredError:
     def forward(self, x, label):
-        self.x = x
+        self.shape = x.shape
+        self.x = x.reshape(label.shape)
         self.label = label
         # loss= sum(  (x-y)*(x-y) )/sum.size
         self.loss = np.sum(np.square(x - self.label)) / self.x.shape[0] / 2  # 求平均后再除以2是为了表示方便
@@ -25,7 +26,7 @@ class CrossEntropyLoss:
         return self.loss
 
     def backward(self):
-        self.dx = (self.x - self.label) / self.x / (1 - self.x)  # 分母会与Sigmoid层中的对应部分抵消
+        self.dx = (self.x - self.label)
         return self.dx
 
 class softmax_cross_entropy_with_logits:
