@@ -1,4 +1,10 @@
 class Flatten:
+    def setParam(self,shape):
+        sum = 1
+        for i in shape:
+            sum = sum*i
+        return (sum,)
+
     def forward(self,x):
         self.shape = x.shape
         return x.reshape((self.shape[0],-1))  # 压平  Flatten,压成二维
@@ -9,9 +15,12 @@ class Flatten:
 class Reshape:
     def __init__(self,input_shape):
         self.input_shape = input_shape
+    def setParam(self):
+        return self.input_shape
+
     def forward(self,x):
         self.shape = x.shape
-        return x.reshape((-1,*self.input_shape))  # 压平  Flatten,压成二维
+        return x.reshape((-1,*self.input_shape))
     def backward(self,dx):
         dx = dx.reshape(self.shape)
         return dx

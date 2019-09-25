@@ -24,4 +24,4 @@ if( __name__ == '__main__'):
     print('loss',loss)
 
     dx = mse.backward()
-    print(dx)
+    print('dx',dx.shape)
