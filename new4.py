@@ -16,8 +16,8 @@ from Metrics.accuracy import Accuracy
 model = Sequential()
 
 model.add( Dense(40,input_shape=(17*17,1)) )
-model.add(Reshape((40,)))
-# model.add(Flatten())
+# model.add(Reshape((40,)))
+model.add(Flatten())
 model.add(Sigmoid())
 model.add(Dense(26))
 

@@ -1,9 +1,7 @@
+import numpy as np
 class Flatten:
     def setParam(self,shape):
-        sum = 1
-        for i in shape:
-            sum = sum*i
-        return (sum,)
+        return (np.prod(shape),)
 
     def forward(self,x):
         self.shape = x.shape
@@ -26,7 +24,6 @@ class Reshape:
         return dx
 
 if( __name__ == '__main__'):
-    import numpy as np
 
     # data = np.full((32, 64,3), 1)
     # f = Flatten()
