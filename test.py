@@ -85,7 +85,19 @@ x = Flatten()(x)
 
 # x = Dense(40, activation='relu')(x)
 x = MyLayer(40)(x)
-x = Activation('relu')(x)
+class MyActivation(Layer):
+    def __init__(self, activation, **kwargs):
+        super(MyActivation, self).__init__(**kwargs)
+        if activation == 'relu':
+            self.activation = K.relu
+    def call(self, inputs):
+        # return K.relu(inputs)
+        return self.activation(inputs)
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+# x = Activation('relu')(x)
+x = MyActivation('relu')(x)
 
 predictions = Dense(26, activation='softmax')(x)
 model = Model(inputs=inputs, outputs=predictions)
